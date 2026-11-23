@@ -634,21 +634,23 @@ function addProductToCart(button) {
 
 }
 
+
 function initializeAddToCartButtons() {
 
-    document.querySelectorAll(".add-to-cart").forEach(button => {
+    document.addEventListener("click", function (event) {
 
-        button.addEventListener("click", function (event) {
+        const button = event.target.closest(".add-to-cart");
 
-            event.preventDefault();
+        if (!button) return;
 
-            addProductToCart(this);
+        event.preventDefault();
 
-        });
+        addProductToCart(button);
 
     });
 
 }
+
 
 function initializeProductFilters() {
 
