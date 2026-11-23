@@ -884,7 +884,7 @@ h3 {
             rgba(0, 0, 0, .95),
             rgba(0, 0, 0, .55)
         ),
-        url("images/About-Hero.jpg") center/cover no-repeat;
+        url("Images/About-Hero.jpg") center/cover no-repeat;
     border-bottom: 1px solid var(--color-primary-dark);
 }
 
@@ -1029,7 +1029,7 @@ h3 {
             rgba(0, 0, 0, .88),
             rgba(0, 0, 0, .88)
         ),
-        url("images/About-CTA.jpg") center/cover no-repeat;
+        url("Images/About-CTA.jpg") center/cover no-repeat;
     border-top: 1px solid var(--color-primary-dark);
 }
 
@@ -1060,7 +1060,7 @@ h3 {
             rgba(0, 0, 0, .72),
             rgba(0, 0, 0, .82)
         ),
-        url("images/Contact-Hero.jpg") center/cover no-repeat;
+        url("Images/Contact-Hero.jpg") center/cover no-repeat;
     border-bottom: 2px solid var(--color-primary-dark);
     text-align: center;
 }
