@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shop Parts | MazdaMotion</title>
+
     <link rel="stylesheet" href="Styles.css">
 </head>
 
@@ -21,27 +24,27 @@
             </a>
 
             <nav class="main-nav" id="mainNav">
-
-    <a href="Index.html">Home</a>
-    <a href="Products.html" class="active">Shop Parts</a>
-    <a href="About.html">About Us</a>
-    <a href="Contact Us.html">Contact</a>
-    <a href="Faq.html">FAQ</a>
-
-</nav>
+                <a href="Index.html">Home</a>
+                <a href="Products.html" class="active">Shop Parts</a>
+                <a href="About.html">About Us</a>
+                <a href="Contact Us.html">Contact</a>
+                <a href="Faq.html">FAQ</a>
+            </nav>
 
             <div class="header-actions">
+
                 <a href="Cart.html" class="cart-link">
                     Cart (<span id="cartCount">0</span>)
                 </a>
 
                 <button class="menu-toggle" id="menuToggle"
                     aria-label="Toggle navigation"
-                    aria-expanded="false" type="button">
+                    aria-expanded="false"
+                    type="button">
                     ☰
                 </button>
-            </div>
 
+            </div>
         </div>
     </header>
 
@@ -55,69 +58,72 @@
 
         <section class="shop-toolbar">
 
-            <input type="text" id="productSearch"
+            <input
+                type="text"
+                id="productSearch"
                 placeholder="Search for Mazda parts..."
                 aria-label="Search Mazda parts">
 
             <select id="categoryFilter"
                 aria-label="Filter products by category">
+
                 <option value="all">All Categories</option>
                 <option value="engine">Engine Parts</option>
                 <option value="brakes">Brake System</option>
                 <option value="cooling">Cooling System</option>
                 <option value="accessories">Accessories</option>
+
             </select>
 
         </section>
 
         <section class="product-grid" id="productGrid"></section>
 
+        <p id="noProductsMessage" hidden>
+            No products found. Try another search or category.
+        </p>
+
     </main>
 
     <footer class="site-footer">
 
-    <div class="container footer-content">
+        <div class="container footer-content">
 
-        <div>
+            <div>
+                <a href="Index.html" class="logo">
+                    MAZDA<span>MOTION</span>
+                </a>
 
-            <a href="Index.html" class="logo">
-                MAZDA<span>MOTION</span>
-            </a>
+                <p>Your Drive. Your Parts. Your Way.</p>
+            </div>
 
-            <p>
-                Your Drive. Your Parts. Your Way.
-            </p>
+            <div class="footer-links">
 
-        </div>
+                <h3>Quick Links</h3>
 
-        <div class="footer-links">
+                <a href="Index.html">Home</a>
+                <a href="Products.html">Shop Parts</a>
+                <a href="About.html">About Us</a>
+                <a href="Contact Us.html">Contact</a>
+                <a href="Faq.html">Frequently Asked Questions</a>
 
-            <h3>Quick Links</h3>
-
-            <a href="Index.html">Home</a>
-            <a href="Products.html">Shop Parts</a>
-            <a href="About.html">About Us</a>
-            <a href="Contact Us.html">Contact</a>
-            <a href="Faq.html">Frequently Asked Questions</a>
+            </div>
 
         </div>
 
-    </div>
+        <div class="container footer-bottom">
+            <p>© 2026 MazdaMotion. All Rights Reserved.</p>
+        </div>
 
-    <div class="container footer-bottom">
-
-        <p>
-            © 2026 MazdaMotion. All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
+    </footer>
 
     <script>
+
+        "use strict";
+
         const products = [
 
-            // ENGINE PARTS
+            // ENGINE PARTS (0-7)
             { name: "ACDelco Oil Filter", category: "engine", image: "ACDelco Oil Filter.jpg", price: 750 },
             { name: "Air Filter", category: "engine", image: "Air Filter.jpg", price: 850 },
             { name: "Radiator", category: "engine", image: "Radiator.jpg", price: 3500 },
@@ -127,7 +133,7 @@
             { name: "Timing Chain", category: "engine", image: "Timing Chain.jpg", price: 2200 },
             { name: "Fuel Injector", category: "engine", image: "Fuel Injector.jpg", price: 1800 },
 
-            // BRAKE SYSTEM
+            // BRAKE SYSTEM (8-15)
             { name: "Brake Pads", category: "brakes", image: "Brake Pads.jpg", price: 1500 },
             { name: "Brake Caliper", category: "brakes", image: "Brake Caliper.jpg", price: 2500 },
             { name: "Brake Fluid", category: "brakes", image: "Brake Fluid.jpg", price: 350 },
@@ -137,7 +143,7 @@
             { name: "OEM Brake Hose Set", category: "brakes", image: "OEM Brake Hose Set.jpg", price: 1200 },
             { name: "Brake Fluid Reservoir", category: "brakes", image: "Brake Fluid Reservoir.jpg", price: 650 },
 
-            // COOLING SYSTEM
+            // COOLING SYSTEM (16-23)
             { name: "Engine Coolant - Variant 1", category: "cooling", image: "Coolant1.jpg", price: 450 },
             { name: "Engine Coolant - Variant 2", category: "cooling", image: "Coolant2.jpg", price: 480 },
             { name: "Engine Coolant - Variant 3", category: "cooling", image: "Coolant3.jpg", price: 500 },
@@ -147,7 +153,7 @@
             { name: "Coolant Reservoir", category: "cooling", image: "Coolant Reservoir.jpg", price: 850 },
             { name: "Thermostat Engine", category: "cooling", image: "Thermostat Engine.jpg", price: 650 },
 
-            // ACCESSORIES
+            // ACCESSORIES (24-31)
             { name: "Windshield Wiper Blades", category: "accessories", image: "Windshield Wiper Blades.jpg", price: 550 },
             { name: "LED Headlight Bulbs", category: "accessories", image: "LED Headlight Bulbs.jpg", price: 1200 },
             { name: "Dashcam Set", category: "accessories", image: "Dashcam Set.jpg", price: 2500 },
@@ -160,69 +166,146 @@
         ];
 
         const productGrid = document.getElementById("productGrid");
+        const productSearch = document.getElementById("productSearch");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const noProductsMessage = document.getElementById("noProductsMessage");
 
-        products.forEach(product => {
+        function getCategoryName(category) {
 
-            const card = document.createElement("article");
-            card.className = "product-card";
-            card.dataset.category = product.category;
+            const categories = {
+                engine: "Engine Parts",
+                brakes: "Brake System",
+                cooling: "Cooling System",
+                accessories: "Accessories"
+            };
 
-            
-const detailsUrl = `Product%20Details.html?name=${encodeURIComponent(product.name)}&category=${encodeURIComponent(product.category)}&image=${encodeURIComponent(product.image)}&price=${product.price}`;
+            return categories[category] || "Other Parts";
 
-card.innerHTML = `
-    <div class="product-image">
-        <img src="Images/${encodeURIComponent(product.image)}"
-             alt="${product.name}" loading="lazy">
-    </div>
+        }
 
-    <div class="product-info">
-        <p class="product-category">
-            ${product.category === "engine" ? "Engine Parts" :
-              product.category === "brakes" ? "Brake System" :
-              product.category === "cooling" ? "Cooling System" :
-              "Accessories"}
-        </p>
+        function displayProducts(productList) {
 
-        <h3>${product.name}</h3>
+            productGrid.innerHTML = "";
 
-        <p class="product-price">
-            ₱${product.price.toLocaleString("en-PH", {
-                minimumFractionDigits: 2
-            })}
-        </p>
+            noProductsMessage.hidden = productList.length !== 0;
 
-        <a href="${detailsUrl}" class="button">
-            View Details
-        </a>
+            productList.forEach(({ product, index }) => {
 
-        <button type="button"
-            class="btn btn-primary add-to-cart"
-            data-name="${product.name}"
-            data-price="${product.price}">
-            Add to Cart
-        </button>
-    </div>
-`;
+                const card = document.createElement("article");
 
+                card.className = "product-card";
+                card.dataset.category = product.category;
 
-            productGrid.appendChild(card);
-        });
+                const detailsUrl =
+                    `Product-details.html?id=${index}`;
 
-        
+                card.innerHTML = `
+
+                    <div class="product-image">
+
+                        <img
+                            src="Images/${encodeURIComponent(product.image)}"
+                            alt="${product.name}"
+                            loading="lazy">
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            ${getCategoryName(product.category)}
+                        </p>
+
+                        <h3>${product.name}</h3>
+
+                        <p class="product-price">
+                            ₱${product.price.toLocaleString("en-PH", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            })}
+                        </p>
+
+                        <a href="${detailsUrl}" class="button">
+                            View Details
+                        </a>
+
+                        <button
+                            type="button"
+                            class="btn btn-primary add-to-cart"
+                            data-name="${product.name}"
+                            data-price="${product.price}"
+                            data-image="${product.image}"
+                            data-category="${product.category}">
+
+                            Add to Cart
+
+                        </button>
+
+                    </div>
+
+                `;
+
+                productGrid.appendChild(card);
+
+            });
+
+        }
+
+        function filterProducts() {
+
+            const searchTerm =
+                productSearch.value.trim().toLowerCase();
+
+            const selectedCategory =
+                categoryFilter.value;
+
+            const filteredProducts = products
+                .map((product, index) => ({ product, index }))
+                .filter(({ product }) => {
+
+                    const matchesSearch =
+                        product.name.toLowerCase().includes(searchTerm);
+
+                    const matchesCategory =
+                        selectedCategory === "all" ||
+                        product.category === selectedCategory;
+
+                    return matchesSearch && matchesCategory;
+
+                });
+
+            displayProducts(filteredProducts);
+
+        }
+
         const requestedCategory =
-            new URLSearchParams(window.location.search).get("category");
+            new URLSearchParams(window.location.search)
+                .get("category");
 
         const validCategories = [
-            "engine", "brakes", "cooling", "accessories"
+            "engine",
+            "brakes",
+            "cooling",
+            "accessories"
         ];
 
         if (validCategories.includes(requestedCategory)) {
-            document.getElementById("categoryFilter").value =
-                requestedCategory;
+
+            categoryFilter.value = requestedCategory;
+
         }
 
-        console.log("MazdaMotion products loaded:", products.length);
+        productSearch.addEventListener("input", filterProducts);
+
+        categoryFilter.addEventListener("change", filterProducts);
+
+        filterProducts();
+
+        console.log(
+            "MazdaMotion products loaded:",
+            products.length
+        );
+
     </script>
 
     <script src="Script.js"></script>

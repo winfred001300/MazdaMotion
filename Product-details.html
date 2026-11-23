@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="View product details and specifications at MazdaMotion.">
+
+    <title>Product Details | MazdaMotion</title>
+
+    <link rel="stylesheet" href="Styles.css">
+
+    <style>
+
+        .product-details-page {
+            padding-top: 65px;
+            padding-bottom: 85px;
+            min-height: 65vh;
+        }
+
+        .product-details-breadcrumb {
+            margin-bottom: 30px;
+            color: var(--color-muted);
+            font-size: 14px;
+        }
+
+        .product-details-breadcrumb a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+        }
+
+        .product-details-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .product-details-image {
+            background: var(--color-surface);
+            border: 1px solid var(--color-surface-light);
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 420px;
+        }
+
+        .product-details-image img {
+            width: 100%;
+            max-width: 430px;
+            height: 360px;
+            object-fit: contain;
+        }
+
+        .product-details-info {
+            padding: 15px 0;
+        }
+
+        .product-details-category {
+            color: var(--color-primary-light);
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .product-details-info h1 {
+            color: var(--color-heading);
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 20px;
+        }
+
+        .product-details-price {
+            color: var(--color-primary-light);
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        .product-details-description {
+            color: var(--color-text);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .product-details-meta {
+            border-top: 1px solid var(--color-surface-light);
+            border-bottom: 1px solid var(--color-surface-light);
+            padding: 18px 0;
+            margin-bottom: 25px;
+        }
+
+        .product-details-meta p {
+            color: var(--color-text);
+            margin: 8px 0;
+        }
+
+        .product-details-meta strong {
+            color: var(--color-heading);
+        }
+
+        .product-details-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .product-details-actions button,
+        .product-details-actions a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .product-details-actions .add-to-cart {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .product-details-actions .add-to-cart:hover {
+            background: var(--color-primary-light);
+        }
+
+        .product-details-actions .back-to-products {
+            background: var(--color-surface-light);
+            color: var(--color-heading);
+        }
+
+        .product-details-actions .back-to-products:hover {
+            background: var(--color-primary-dark);
+        }
+
+        .product-not-found {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .product-not-found h2 {
+            color: var(--color-heading);
+            margin-bottom: 15px;
+        }
+
+        .product-not-found p {
+            color: var(--color-muted);
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+
+            .product-details-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-details-image {
+                min-height: 300px;
+            }
+
+            .product-details-image img {
+                height: 260px;
+            }
+
+            .product-details-info h1 {
+                font-size: 30px;
+            }
+
+            .product-details-price {
+                font-size: 26px;
+            }
+
+            .product-details-actions {
+                flex-direction: column;
+            }
+
+            .product-details-actions button,
+            .product-details-actions a {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="announcement">
+        QUALITY PARTS. BETTER DRIVES. MAZDAMOTION.
+    </div>
+
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <a href="Index.html" class="logo">
+                MAZDA<span>MOTION</span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+
+                <a href="Index.html">Home</a>
+                <a href="Products.html" class="active">Shop Parts</a>
+                <a href="About.html">About Us</a>
+                <a href="Contact Us.html">Contact</a>
+                <a href="Faq.html">FAQ</a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="Cart.html" class="cart-link">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
+                    type="button">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container product-details-page">
+
+        <div class="product-details-breadcrumb">
+
+            <a href="Index.html">Home</a>
+            /
+            <a href="Products.html">Shop Parts</a>
+            /
+            Product Details
+
+        </div>
+
+        <section id="productDetailsContainer">
+
+            <div class="product-details-layout">
+
+                <div class="product-details-image">
+
+                    <img
+                        id="productImage"
+                        src=""
+                        alt="Selected Mazda automotive part">
+
+                </div>
+
+                <div class="product-details-info">
+
+                    <p
+                        class="product-details-category"
+                        id="productCategory">
+                        PRODUCT CATEGORY
+                    </p>
+
+                    <h1 id="productName">
+                        Product Name
+                    </h1>
+
+                    <p class="product-details-price">
+                        <span id="productPrice">₱0.00</span>
+                    </p>
+
+                    <p
+                        class="product-details-description"
+                        id="productDescription">
+
+                        Explore our MazdaMotion automotive parts collection.
+
+                    </p>
+
+                    <div class="product-details-meta">
+
+                        <p>
+                            <strong>Product ID:</strong>
+                            <span id="productReference">MM-000</span>
+                        </p>
+
+                        <p>
+                            <strong>Category:</strong>
+                            <span id="productCategoryMeta"></span>
+                        </p>
+
+                        <p>
+                            <strong>Availability:</strong>
+                            Available for selection
+                        </p>
+
+                    </div>
+
+                    <div class="product-details-actions">
+
+                        <button
+                            type="button"
+                            class="add-to-cart"
+                            id="productAddToCart"
+                            data-name=""
+                            data-price=""
+                            data-image=""
+                            data-category="">
+
+                            Add to Cart
+
+                        </button>
+
+                        <a
+                            href="Products.html"
+                            class="back-to-products">
+
+                            Back to Products
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section
+            id="productNotFound"
+            class="product-not-found"
+            hidden>
+
+            <h2>Product Not Found</h2>
+
+            <p>
+                We couldn't find the requested product.
+                Please return to our product collection.
+            </p>
+
+            <a href="Products.html" class="button">
+                Browse Products
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <a href="Index.html" class="logo">
+                    MAZDA<span>MOTION</span>
+                </a>
+
+                <p>
+                    Your Drive. Your Parts. Your Way.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Quick Links</h3>
+
+                <a href="Index.html">Home</a>
+                <a href="Products.html">Shop Parts</a>
+                <a href="About.html">About Us</a>
+                <a href="Contact Us.html">Contact</a>
+                <a href="Faq.html">Frequently Asked Questions</a>
+
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+
+            <p>
+                © 2026 MazdaMotion. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        "use strict";
+
+        const products = [
+
+            {
+                name: "ACDelco Oil Filter",
+                category: "ENGINE PARTS",
+                image: "ACDelco Oil Filter.jpg",
+                price: 750,
+                alt: "ACDelco oil filter"
+            },
+
+            {
+                name: "Air Filter",
+                category: "ENGINE PARTS",
+                image: "Air Filter.jpg",
+                price: 850,
+                alt: "Automotive air filter"
+            },
+
+            {
+                name: "Radiator",
+                category: "ENGINE PARTS",
+                image: "Radiator.jpg",
+                price: 3500,
+                alt: "Automotive radiator"
+            },
+
+            {
+                name: "VIC Oil Filter",
+                category: "ENGINE PARTS",
+                image: "VIC Oil Filter.jpg",
+                price: 550,
+                alt: "VIC automotive oil filter"
+            },
+
+            {
+                name: "Spark Plugs",
+                category: "ENGINE PARTS",
+                image: "Spark Plugs.jpg",
+                price: 450,
+                alt: "Automotive spark plugs"
+            },
+
+            {
+                name: "Timing Belt Kit",
+                category: "ENGINE PARTS",
+                image: "Timing Belt Kit.jpg",
+                price: 2800,
+                alt: "Automotive timing belt kit"
+            },
+
+            {
+                name: "Timing Chain",
+                category: "ENGINE PARTS",
+                image: "Timing Chain.jpg",
+                price: 2200,
+                alt: "Automotive timing chain"
+            },
+
+            {
+                name: "Fuel Injector",
+                category: "ENGINE PARTS",
+                image: "Fuel Injector.jpg",
+                price: 1800,
+                alt: "Automotive fuel injector"
+            },
+
+            {
+                name: "Brake Pads",
+                category: "BRAKE SYSTEM",
+                image: "Brake Pads.jpg",
+                price: 1500,
+                alt: "Automotive brake pads"
+            },
+
+            {
+                name: "Brake Caliper",
+                category: "BRAKE SYSTEM",
+                image: "Brake Caliper.jpg",
+                price: 2500,
+                alt: "Automotive brake caliper"
+            },
+
+            {
+                name: "Brake Fluid",
+                category: "BRAKE SYSTEM",
+                image: "Brake Fluid.jpg",
+                price: 350,
+                alt: "Automotive brake fluid"
+            },
+
+            {
+                name: "Multipurpose Brake Fluid",
+                category: "BRAKE SYSTEM",
+                image: "Multipurpose Brake Fluid.jpg",
+                price: 400,
+                alt: "Multipurpose brake fluid"
+            },
+
+            {
+                name: "Brake Disc Rotor",
+                category: "BRAKE SYSTEM",
+                image: "Brake Disc Rotor.jpg",
+                price: 2000,
+                alt: "Automotive brake disc rotor"
+            },
+
+            {
+                name: "OEM Pedal Set",
+                category: "BRAKE SYSTEM",
+                image: "OEM Pedal Set.jpg",
+                price: 950,
+                alt: "OEM pedal set"
+            },
+
+            {
+                name: "OEM Brake Hose Set",
+                category: "BRAKE SYSTEM",
+                image: "OEM Brake Hose Set.jpg",
+                price: 1200,
+                alt: "OEM brake hose set"
+            },
+
+            {
+                name: "Brake Fluid Reservoir",
+                category: "BRAKE SYSTEM",
+                image: "Brake Fluid Reservoir.jpg",
+                price: 650,
+                alt: "Brake fluid reservoir"
+            },
+
+            {
+                name: "Engine Coolant - Variant 1",
+                category: "COOLING SYSTEM",
+                image: "Coolant1.jpg",
+                price: 450,
+                alt: "Engine coolant variant one"
+            },
+
+            {
+                name: "Engine Coolant - Variant 2",
+                category: "COOLING SYSTEM",
+                image: "Coolant2.jpg",
+                price: 480,
+                alt: "Engine coolant variant two"
+            },
+
+            {
+                name: "Engine Coolant - Variant 3",
+                category: "COOLING SYSTEM",
+                image: "Coolant3.jpg",
+                price: 500,
+                alt: "Engine coolant variant three"
+            },
+
+            {
+                name: "OEM Radiator Cap",
+                category: "COOLING SYSTEM",
+                image: "OEM Radiator Cap.jpg",
+                price: 350,
+                alt: "OEM radiator cap"
+            },
+
+            {
+                name: "Water Pump",
+                category: "COOLING SYSTEM",
+                image: "Water Pump.jpg",
+                price: 1800,
+                alt: "Automotive water pump"
+            },
+
+            {
+                name: "Cooling Fan",
+                category: "COOLING SYSTEM",
+                image: "Cooling Fan.jpg",
+                price: 2200,
+                alt: "Automotive cooling fan"
+            },
+
+            {
+                name: "Coolant Reservoir",
+                category: "COOLING SYSTEM",
+                image: "Coolant Reservoir.jpg",
+                price: 850,
+                alt: "Automotive coolant reservoir"
+            },
+
+            {
+                name: "Thermostat Engine",
+                category: "COOLING SYSTEM",
+                image: "Thermostat Engine.jpg",
+                price: 650,
+                alt: "Automotive engine thermostat"
+            },
+
+            {
+                name: "Windshield Wiper Blades",
+                category: "ACCESSORIES",
+                image: "Windshield Wiper Blades.jpg",
+                price: 550,
+                alt: "Windshield wiper blades"
+            },
+
+            {
+                name: "LED Headlight Bulbs",
+                category: "ACCESSORIES",
+                image: "LED Headlight Bulbs.jpg",
+                price: 1200,
+                alt: "LED automotive headlight bulbs"
+            },
+
+            {
+                name: "Dashcam Set",
+                category: "ACCESSORIES",
+                image: "Dashcam Set.jpg",
+                price: 2500,
+                alt: "Automotive dashcam set"
+            },
+
+            {
+                name: "Early Warning Device",
+                category: "ACCESSORIES",
+                image: "Early Warning Device.jpg",
+                price: 250,
+                alt: "Automotive early warning device"
+            },
+
+            {
+                name: "Tire Inflator",
+                category: "ACCESSORIES",
+                image: "Tire Inflator.jpg",
+                price: 1000,
+                alt: "Portable tire inflator"
+            },
+
+            {
+                name: "Pressure Washer",
+                category: "ACCESSORIES",
+                image: "Pressure Washer.jpg",
+                price: 2800,
+                alt: "Portable pressure washer"
+            },
+
+            {
+                name: "Flashlight Set",
+                category: "ACCESSORIES",
+                image: "Flashlight Set.jpg",
+                price: 450,
+                alt: "Emergency flashlight set"
+            },
+
+            {
+                name: "Emergency Kit",
+                category: "ACCESSORIES",
+                image: "Emergency Kit.jpg",
+                price: 850,
+                alt: "Automotive emergency kit"
+            }
+
+        ];
+
+        const descriptions = {
+
+            "ENGINE PARTS":
+                "Maintain your Mazda's engine performance with quality automotive engine components from MazdaMotion. Explore essential replacement parts designed to support your vehicle's operation.",
+
+            "BRAKE SYSTEM":
+                "Support your vehicle's braking system with automotive brake components selected for your Mazda. Explore replacement parts designed to help maintain braking performance and safety.",
+
+            "COOLING SYSTEM":
+                "Help maintain proper engine temperature with cooling system components from MazdaMotion. Explore essential parts designed to support your vehicle's cooling system.",
+
+            "ACCESSORIES":
+                "Explore practical automotive accessories designed to complement your Mazda driving experience. Find useful vehicle equipment and emergency essentials at MazdaMotion."
+
+        };
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        const productId = params.get("id");
+
+        const isValidId =
+            productId !== null &&
+            /^\d+$/.test(productId);
+
+        const selectedIndex =
+            isValidId ? Number(productId) : -1;
+
+        const selectedProduct =
+            selectedIndex >= 0 &&
+            selectedIndex < products.length
+                ? products[selectedIndex]
+                : null;
+
+        if (selectedProduct) {
+
+            const product = selectedProduct;
+
+            const formattedPrice =
+                product.price.toLocaleString(
+                    "en-PH",
+                    {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+                    }
+                );
+
+            
+            const imagePath =
+                "Images/" +
+                encodeURIComponent(product.image);
+
+        
+            document.title =
+                product.name + " | MazdaMotion";
+
+            
+            document.getElementById(
+                "productName"
+            ).textContent = product.name;
+
+            
+            document.getElementById(
+                "productCategory"
+            ).textContent = product.category;
+
+            document.getElementById(
+                "productCategoryMeta"
+            ).textContent = product.category;
+
+            
+            document.getElementById(
+                "productPrice"
+            ).textContent = "₱" + formattedPrice;
+
+            
+            document.getElementById(
+                "productReference"
+            ).textContent =
+                "MM-" +
+                String(selectedIndex + 1).padStart(3, "0");
+
+            
+            document.getElementById(
+                "productDescription"
+            ).textContent =
+                descriptions[product.category];
+
+            
+            const imageElement =
+                document.getElementById("productImage");
+
+            imageElement.src = imagePath;
+            imageElement.alt = product.alt;
+
+            imageElement.onerror = function () {
+
+                console.error(
+                    "Product image not found:",
+                    imagePath
+                );
+
+            };
+
+            const addToCartButton =
+                document.getElementById("productAddToCart");
+
+            addToCartButton.dataset.name =
+                product.name;
+
+            addToCartButton.dataset.price =
+                product.price;
+
+            addToCartButton.dataset.image =
+                imagePath;
+
+            addToCartButton.dataset.category =
+                product.category;
+
+            console.log(
+                "Selected Product:",
+                product.name
+            );
+
+            console.log(
+                "Product ID:",
+                selectedIndex
+            );
+
+            console.log(
+                "Product Image:",
+                imagePath
+            );
+
+        } else {
+
+            document.getElementById(
+                "productDetailsContainer"
+            ).hidden = true;
+
+            document.getElementById(
+                "productNotFound"
+            ).hidden = false;
+
+            document.title =
+                "Product Not Found | MazdaMotion";
+
+            console.error(
+                "Invalid or missing product ID:",
+                productId
+            );
+
+        }
+
+        console.log(
+            "MazdaMotion Product Database:",
+            products.length,
+            "products loaded."
+        );
+
+    </script>
+
+    <script src="Script.js"></script>
+
+</body>
+
+</html>

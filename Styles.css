@@ -5,13 +5,14 @@
     --color-primary: #c40012;
     --color-primary-dark: #940008;
     --color-primary-light: #ff333f;
-    --color-heading: #fff;
-    --color-text: #ddd;
+    --color-heading: #ffffff;
+    --color-text: #dddddd;
     --color-muted: #bdbdbd;
     --color-border: #494949;
 
     --content-width: 1200px;
     --radius: 10px;
+    --transition: .25s ease;
 }
 
 * {
@@ -29,6 +30,7 @@ body {
     color: var(--color-text);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
+    min-width: 320px;
 }
 
 a {
@@ -52,11 +54,6 @@ button {
     cursor: pointer;
 }
 
-.container {
-    width: min(100% - 40px, var(--content-width));
-    margin: auto;
-}
-
 h1,
 h2,
 h3 {
@@ -67,6 +64,11 @@ h3 {
 :focus-visible {
     outline: 2px solid var(--color-primary-light);
     outline-offset: 3px;
+}
+
+.container {
+    width: min(100% - 40px, var(--content-width));
+    margin: auto;
 }
 
 .announcement {
@@ -128,7 +130,7 @@ h3 {
 .nav-links a {
     font-size: 14px;
     color: var(--color-muted);
-    transition: color .2s ease;
+    transition: color var(--transition);
 }
 
 .main-nav a:hover,
@@ -150,6 +152,7 @@ h3 {
     border-radius: 5px;
     font-size: 13px;
     white-space: nowrap;
+    transition: var(--transition);
 }
 
 .cart-link:hover,
@@ -169,7 +172,6 @@ h3 {
     color: white;
     border: none;
     font-size: 25px;
-    cursor: pointer;
 }
 
 .button,
@@ -182,9 +184,11 @@ h3 {
     border-radius: 5px;
     font-weight: bold;
     font-size: 13px;
-    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
-    cursor: pointer;
     text-align: center;
+    cursor: pointer;
+    transition: background var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
 }
 
 .button:hover:not(:disabled),
@@ -254,7 +258,7 @@ h3 {
     overflow: hidden;
     position: relative;
     box-shadow: 0 10px 35px rgba(196, 0, 18, .15);
-    transition: .3s ease;
+    transition: var(--transition);
 }
 
 .hero-visual:hover {
@@ -264,7 +268,6 @@ h3 {
 }
 
 .hero-visual img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -337,7 +340,7 @@ h3 {
     padding: 25px 20px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    transition: .25s;
+    transition: var(--transition);
 }
 
 .category-card:hover {
@@ -385,7 +388,7 @@ h3 {
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
-    transition: .25s;
+    transition: var(--transition);
 }
 
 .product-card:hover {
@@ -619,6 +622,7 @@ h3 {
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 25px;
+    min-width: 0;
 }
 
 .cart-section-header {
@@ -641,6 +645,7 @@ h3 {
 #cart-items {
     display: grid;
     gap: 0;
+    min-width: 0;
 }
 
 .cart-item {
@@ -650,6 +655,7 @@ h3 {
     align-items: center;
     padding: 22px 0;
     border-bottom: 1px solid #303030;
+    min-width: 0;
 }
 
 .cart-item:last-child {
@@ -662,9 +668,14 @@ h3 {
     background: var(--color-surface-light);
     border-radius: 8px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .cart-product-image {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -675,9 +686,12 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 100%;
     color: var(--color-muted);
     font-size: 12px;
+    text-align: center;
+    padding: 8px;
 }
 
 .cart-item-info {
@@ -710,9 +724,8 @@ h3 {
     background: #222;
     color: white;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 18px;
-    transition: .2s;
+    transition: var(--transition);
 }
 
 .quantity-button:hover {
@@ -730,7 +743,6 @@ h3 {
     background: transparent;
     border: none;
     color: #e45b5b;
-    cursor: pointer;
     font-size: 13px;
     padding: 0;
 }
@@ -818,8 +830,7 @@ h3 {
     color: #e45b5b;
     border: 1px solid #e45b5b;
     border-radius: 6px;
-    cursor: pointer;
-    transition: .2s;
+    transition: var(--transition);
 }
 
 .clear-cart-button:hover {
@@ -984,7 +995,7 @@ h3 {
     padding: 30px 25px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    transition: .3s ease;
+    transition: var(--transition);
 }
 
 .feature-card:hover {
@@ -1139,7 +1150,7 @@ h3 {
     border-radius: var(--radius);
     padding: 25px 20px;
     margin-bottom: 18px;
-    transition: .3s ease;
+    transition: var(--transition);
 }
 
 .contact-info-card:hover {
@@ -1222,7 +1233,7 @@ h3 {
     font-size: 14px;
     text-align: center;
     outline: none;
-    transition: .3s ease;
+    transition: var(--transition);
 }
 
 .contact-form-container input:focus,
@@ -1247,7 +1258,6 @@ h3 {
     width: 100%;
     max-width: 220px;
     margin: 10px auto 0;
-    cursor: pointer;
 }
 
 .contact-feedback {
@@ -1313,6 +1323,7 @@ h3 {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    min-width: 0;
 }
 
 .checkout-section,
@@ -1362,10 +1373,9 @@ h3 {
     color: var(--color-heading);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     outline: none;
-    transition: .2s;
+    transition: var(--transition);
 }
 
 .checkout-field input:focus,
@@ -1399,7 +1409,7 @@ h3 {
     border: 1px solid var(--color-border);
     border-radius: 8px;
     cursor: pointer;
-    transition: .2s;
+    transition: var(--transition);
 }
 
 .payment-option:hover {
@@ -1409,7 +1419,6 @@ h3 {
 .payment-option input {
     margin-top: 5px;
     accent-color: var(--color-primary);
-    cursor: pointer;
 }
 
 .payment-option span {
@@ -1438,6 +1447,7 @@ h3 {
 .checkout-summary {
     position: sticky;
     top: 110px;
+    min-width: 0;
 }
 
 #checkoutItems {
@@ -1514,7 +1524,6 @@ h3 {
     margin-top: 25px;
     border: 1px solid var(--color-primary-light);
     font-size: 14px;
-    cursor: pointer;
 }
 
 .checkout-place-order:disabled {
@@ -1530,7 +1539,7 @@ h3 {
     color: var(--color-muted);
     font-size: 13px;
     margin-top: 18px;
-    transition: .2s;
+    transition: var(--transition);
 }
 
 .checkout-back-link:hover {
@@ -1550,7 +1559,6 @@ h3 {
     color: var(--color-heading);
     font-size: 25px;
     font-weight: bold;
-    text-decoration: none;
 }
 
 .confirmation-logo span {
@@ -1566,8 +1574,7 @@ h3 {
 .confirmation-nav a {
     color: var(--color-text);
     font-size: 14px;
-    text-decoration: none;
-    transition: .3s;
+    transition: var(--transition);
 }
 
 .confirmation-nav a:hover {
@@ -1779,11 +1786,10 @@ h3 {
     display: inline-block;
     padding: 13px 25px;
     border-radius: 6px;
-    text-decoration: none;
     text-align: center;
     font-weight: bold;
     font-size: 13px;
-    transition: .3s ease;
+    transition: var(--transition);
 }
 
 .confirmation-button {
@@ -1907,7 +1913,7 @@ h3 {
     border-radius: var(--radius);
     margin-bottom: 14px;
     overflow: hidden;
-    transition: border-color .3s ease;
+    transition: border-color var(--transition);
 }
 
 .faq-item:hover {
@@ -1920,7 +1926,6 @@ h3 {
     border: none;
     background: transparent;
     color: var(--color-heading);
-    font-family: inherit;
     font-size: 15px;
     font-weight: bold;
     text-align: left;
@@ -1928,8 +1933,7 @@ h3 {
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    cursor: pointer;
-    transition: color .2s ease;
+    transition: color var(--transition);
 }
 
 .faq-question:hover {
@@ -1995,31 +1999,6 @@ h3 {
 
 .faq-contact .btn {
     display: inline-block;
-    background: var(--color-primary);
-    color: white;
-    padding: 13px 25px;
-    border: 1px solid var(--color-primary-light);
-    border-radius: 5px;
-    font-weight: bold;
-    transition: .2s;
-}
-
-.faq-contact .btn:hover {
-    background: var(--color-primary-light);
-    transform: translateY(-2px);
-}
-
-.footer {
-    background: #050505;
-    border-top: 1px solid var(--color-primary-dark);
-    padding: 30px 20px;
-    text-align: center;
-}
-
-.footer p {
-    color: var(--color-muted);
-    font-size: 13px;
-    line-height: 1.8;
 }
 
 .cta-section {
@@ -2042,6 +2021,19 @@ h3 {
 
 .cta-content p:not(.eyebrow) {
     color: var(--color-muted);
+}
+
+.footer {
+    background: #050505;
+    border-top: 1px solid var(--color-primary-dark);
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.8;
 }
 
 .site-footer {
@@ -2546,6 +2538,10 @@ h3 {
 
     .cart-item-subtotal {
         grid-column: 1;
+    }
+
+    .checkout-product {
+        flex-wrap: wrap;
     }
 }
 

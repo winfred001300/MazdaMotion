@@ -603,7 +603,9 @@
 
         if (featuredProducts) {
 
-            products.forEach((product) => {
+            const featuredItems = products.slice(0, 8);
+
+            featuredItems.forEach((product, index) => {
 
                 const productCard =
                     document.createElement("article");
@@ -612,6 +614,9 @@
 
                 const imagePath =
                     "Images/" + encodeURIComponent(product.image);
+
+                const productLink =
+                    "Product-details.html?id=" + index;
 
                 productCard.innerHTML = `
 
@@ -640,7 +645,7 @@
                         </p>
 
                         <a
-                            href="Product-details.html"
+                            href="${productLink}"
                             class="product-link">
 
                             VIEW PRODUCT →
@@ -679,6 +684,11 @@
 
         console.log(
             "Expected Products: 32"
+        );
+
+        console.log(
+            "Featured Products Displayed:",
+            Math.min(products.length, 8)
         );
 
     </script>
