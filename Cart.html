@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Review your selected automotive parts and accessories at MazdaMotion.">
+
+    <title>Shopping Cart | MazdaMotion</title>
+
+    <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+
+            <a href="Index.html" class="logo">
+                MAZDA<span>MOTION</span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="Index.html">Home</a>
+                <a href="Products.html">Shop Parts</a>
+                <a href="About.html">About</a>
+                <a href="Contact.html">Contact</a>
+                <a href="Faq.html">FAQ</a>
+                <a href="Cart.html" class="active">Cart</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+
+            <h1>Shopping Cart</h1>
+
+            <p>
+                Review your selected automotive parts and accessories.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="cart-section">
+
+        <div class="container">
+
+            <div class="cart-layout">
+
+                <div class="cart-items-container">
+
+                    <div class="section-heading">
+
+                        <h2>Your Items</h2>
+
+                        <p>
+                            Review your selected products before checkout.
+                        </p>
+
+                    </div>
+
+                    <div id="cart-items">
+
+                    </div>
+
+                    <div class="cart-actions">
+
+                        <a href="Products.html" class="continue-shopping">
+                            ← Continue Shopping
+                        </a>
+
+                        <button type="button"
+                            class="clear-cart-button"
+                            onclick="clearCart()">
+                            Clear Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <aside class="cart-summary">
+
+                    <h2>Order Summary</h2>
+
+                    <div class="summary-row">
+
+                        <span>Items</span>
+
+                        <span id="summaryItems">0</span>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>Subtotal</span>
+
+                        <span>
+                            ₱<span id="cart-subtotal">0.00</span>
+                        </span>
+
+                    </div>
+
+                    <div class="summary-row">
+
+                        <span>Shipping</span>
+
+                        <span>
+                            ₱<span id="cartShipping">0.00</span>
+                        </span>
+
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row total-row">
+
+                        <strong>Total</strong>
+
+                        <strong>
+                            ₱<span id="cart-total">0.00</span>
+                        </strong>
+
+                    </div>
+
+                    <button 
+                    type="button"
+                    class="button checkout-button"
+                    id="checkoutButton">
+                    Proceed to Checkout
+                    </button>
+
+                    <p class="cart-note">
+
+                        Your order summary will be calculated automatically.
+
+                    </p>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 MazdaMotion. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="Script.js"></script>
+
+</body>
+
+</html>

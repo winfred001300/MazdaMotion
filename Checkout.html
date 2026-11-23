@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Complete your automotive parts purchase securely with MazdaMotion.">
+
+    <title>Checkout | MazdaMotion</title>
+
+    <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+
+    <div class="announcement">
+        QUALITY PARTS. BETTER DRIVES. MAZDAMOTION.
+    </div>
+
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <a href="Index.html" class="logo">
+                MAZDA<span>MOTION</span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+
+                <a href="Index.html">Home</a>
+
+                <a href="Products.html">Shop Parts</a>
+
+                <a href="About.html">About Us</a>
+
+                <a href="Contact Us.html">Contact</a>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="Cart.html" class="cart-link">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container checkout-page">
+
+        <div class="checkout-heading">
+
+            <h1>Checkout</h1>
+
+            <p>
+                Complete your information and review your order
+                before placing your purchase.
+            </p>
+
+        </div>
+
+        <form id="checkoutForm" class="checkout-layout" novalidate>
+
+            <div class="checkout-details">
+
+                <section class="checkout-section">
+
+                    <h2>Customer Information</h2>
+
+                    <div class="checkout-form-grid">
+
+
+                        <div class="checkout-field">
+
+                            <label for="customerName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                name="customerName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required>
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="customerEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="customerEmail"
+                                name="customerEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required>
+
+                        </div>
+
+
+                        <div class="checkout-field full-width">
+
+                            <label for="customerPhone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="customerPhone"
+                                name="customerPhone"
+                                placeholder="09XXXXXXXXX"
+                                pattern="09[0-9]{9}"
+                                maxlength="11"
+                                minlength="11"
+                                autocomplete="tel"
+                                required>
+
+                            <small>
+                                Enter your 11-digit Philippine mobile number.
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+                <section class="checkout-section">
+
+                    <h2>Shipping Information</h2>
+
+                    <div class="checkout-form-grid">
+
+
+                        <div class="checkout-field full-width">
+
+                            <label for="shippingAddress">
+                                House Number, Street, and Barangay
+                            </label>
+
+                            <textarea
+                                id="shippingAddress"
+                                name="shippingAddress"
+                                rows="3"
+                                placeholder="Enter your complete address"
+                                autocomplete="street-address"
+                                required></textarea>
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="shippingCity">
+                                City / Municipality
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingCity"
+                                name="shippingCity"
+                                placeholder="Enter your city"
+                                autocomplete="address-level2"
+                                required>
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="shippingProvince">
+                                Province
+                            </label>
+
+                            <input
+                                type="text"
+                                id="shippingProvince"
+                                name="shippingProvince"
+                                placeholder="Enter your province"
+                                autocomplete="address-level1"
+                                required>
+
+                        </div>
+
+
+                        <div class="checkout-field full-width">
+
+                            <label for="postalCode">
+                                Postal Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="postalCode"
+                                name="postalCode"
+                                placeholder="Enter your 4-digit postal code"
+                                pattern="[0-9]{4}"
+                                minlength="4"
+                                maxlength="4"
+                                inputmode="numeric"
+                                autocomplete="postal-code"
+                                required>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+                <section class="checkout-section">
+
+                    <h2>Payment Method</h2>
+
+                    <div class="payment-options">
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="Cash on Delivery"
+                                required>
+
+                            <span>
+
+                                <strong>
+                                    Cash on Delivery (COD)
+                                </strong>
+
+                                <small>
+                                    Pay when your order arrives.
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="GCash">
+
+                            <span>
+
+                                <strong>
+                                    GCash
+                                </strong>
+
+                                <small>
+                                    Demonstration payment option only.
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+
+                    <p class="checkout-note">
+
+                        Note: MazdaMotion is a demonstration
+                        e-commerce project. No actual online
+                        payment will be processed.
+
+                    </p>
+
+                </section>
+
+
+            </div>
+
+            <aside class="checkout-summary">
+
+
+                <h2>Your Order</h2>
+
+                <div id="checkoutItems">
+
+                    <p>Loading your order...</p>
+
+                </div>
+
+
+                <div class="checkout-summary-divider"></div>
+
+                <div class="checkout-summary-row">
+
+                    <span>Total Items</span>
+
+                    <span id="checkoutItemCount">0</span>
+
+                </div>
+
+                <div class="checkout-summary-row">
+
+                    <span>Subtotal</span>
+
+                    <span>
+                        ₱<span id="checkoutSubtotal">0.00</span>
+                    </span>
+
+                </div>
+
+                <div class="checkout-summary-row">
+
+                    <span>Delivery Fee</span>
+
+                    <span>
+                        ₱<span id="checkoutDelivery">0.00</span>
+                    </span>
+
+                </div>
+
+
+                <div class="checkout-summary-divider"></div>
+
+                <div class="checkout-summary-row checkout-grand-total">
+
+                    <strong>Total Amount</strong>
+
+                    <strong>
+                        ₱<span id="checkoutTotal">0.00</span>
+                    </strong>
+
+                </div>
+
+
+                <p class="checkout-note">
+
+                    Delivery fee is currently set to ₱0.00
+                    for this project demonstration.
+
+                </p>
+
+                <button
+                    type="submit"
+                    class="button checkout-place-order"
+                    id="placeOrderButton"
+                    form="checkoutForm">
+
+                    Place Order
+
+                </button>
+
+
+                <!-- RETURN TO CART -->
+
+                <a
+                    href="Cart.html"
+                    class="checkout-back-link">
+
+                    Return to Shopping Cart
+
+                </a>
+
+
+            </aside>
+
+
+        </form>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                © 2026 MazdaMotion. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="Script.js" defer></script>
+
+</body>
+
+</html>

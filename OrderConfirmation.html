@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Your MazdaMotion order confirmation and purchase details.">
+
+    <title>Order Confirmation | MazdaMotion</title>
+
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+    <header class="confirmation-header">
+        <a href="Index.html" class="confirmation-logo">
+            Mazda<span>Motion</span>
+        </a>
+
+        <nav class="confirmation-nav">
+            <a href="Index.html">Home</a>
+            <a href="Products.html">Shop Parts</a>
+            <a href="Faq.html">FAQ</a>
+        </nav>
+    </header>
+
+    <main class="confirmation-container">
+
+        <section class="confirmation-success">
+            <div class="confirmation-check">✓</div>
+
+            <p class="confirmation-label">ORDER PLACED</p>
+
+            <h1>Thank You for Your Order!</h1>
+
+            <p>
+                Your order has been successfully recorded.
+                Below is your order summary for your reference.
+            </p>
+
+            <div class="confirmation-reference">
+                <span>Order Reference</span>
+                <strong id="orderReference">Loading...</strong>
+            </div>
+        </section>
+
+        <section id="orderDetails" class="confirmation-details">
+
+            <div class="confirmation-section">
+                <h2>Order Information</h2>
+
+                <div class="confirmation-info-grid">
+                    <div>
+                        <span>Order Date</span>
+                        <strong id="orderDate">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Payment Method</span>
+                        <strong id="paymentMethod">-</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-section">
+                <h2>Customer Information</h2>
+
+                <div class="confirmation-info-grid">
+                    <div>
+                        <span>Full Name</span>
+                        <strong id="customerName">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Email Address</span>
+                        <strong id="customerEmail">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Phone Number</span>
+                        <strong id="customerPhone">-</strong>
+                    </div>
+
+                    <div>
+                        <span>Shipping Address</span>
+                        <strong id="shippingAddress">-</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-section">
+                <h2>Ordered Products</h2>
+                <div id="confirmationItems"></div>
+            </div>
+
+            <div class="confirmation-section confirmation-total-section">
+                <h2>Payment Summary</h2>
+
+                <div class="confirmation-summary-row">
+                    <span>Subtotal</span>
+                    <strong id="orderSubtotal">₱0.00</strong>
+                </div>
+
+                <div class="confirmation-summary-row">
+                    <span>Delivery Fee</span>
+                    <strong id="orderDelivery">₱0.00</strong>
+                </div>
+
+                <div class="confirmation-summary-row confirmation-grand-total">
+                    <span>Total Amount</span>
+                    <strong id="orderTotal">₱0.00</strong>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="noOrderMessage" class="confirmation-empty" hidden>
+            <h2>No Order Found</h2>
+
+            <p>
+                We couldn't find a recent order to display.
+                Please visit our products page to continue shopping.
+            </p>
+
+            <a href="Products.html" class="confirmation-button">
+                Browse Products
+            </a>
+        </section>
+
+        <div class="confirmation-actions" id="confirmationActions">
+            <a href="Products.html" class="confirmation-button">
+                Continue Shopping
+            </a>
+
+            <a href="Index.html" class="confirmation-home-button">
+                Back to Home
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="confirmation-footer">
+        <p>&copy; 2026 MazdaMotion. All Rights Reserved.</p>
+        <p>Your Trusted Source for Automotive Parts and Accessories.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const order = JSON.parse(
+                localStorage.getItem("mazdaMotionOrder")
+            );
+
+            const orderDetails = document.getElementById("orderDetails");
+            const noOrderMessage = document.getElementById("noOrderMessage");
+            const confirmationActions = document.getElementById("confirmationActions");
+
+            function escapeHTML(value) {
+                return String(value ?? "").replace(/[&<>"']/g, function (character) {
+                    const entities = {
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#39;"
+                    };
+
+                    return entities[character];
+                });
+            }
+
+            function formatPrice(price) {
+                return Number(price || 0).toLocaleString("en-PH", {
+                    style: "currency",
+                    currency: "PHP"
+                });
+            }
+
+            if (!order) {
+                orderDetails.hidden = true;
+                noOrderMessage.hidden = false;
+                confirmationActions.hidden = true;
+                return;
+            }
+
+            document.getElementById("orderReference").textContent =
+                order.reference || "Not available";
+
+            document.getElementById("orderDate").textContent =
+                order.date || "Not available";
+
+            document.getElementById("paymentMethod").textContent =
+                order.paymentMethod || "Not specified";
+
+            const customer = order.customer || {};
+
+            document.getElementById("customerName").textContent =
+                customer.fullName || "-";
+
+            document.getElementById("customerEmail").textContent =
+                customer.email || "-";
+
+            document.getElementById("customerPhone").textContent =
+                customer.phone || "-";
+
+            const address = [
+                customer.address,
+                customer.city,
+                customer.province,
+                customer.postalCode
+            ].filter(Boolean).join(", ");
+
+            document.getElementById("shippingAddress").textContent =
+                address || "-";
+
+            const itemsContainer = document.getElementById("confirmationItems");
+            const items = Array.isArray(order.items) ? order.items : [];
+
+            if (items.length === 0) {
+                itemsContainer.textContent =
+                    "No product information available.";
+            } else {
+                itemsContainer.innerHTML = items.map(function (item) {
+
+                    const imageHTML = item.image
+                        ? `<img src="${escapeHTML(item.image)}"
+                                alt="${escapeHTML(item.name)}"
+                                class="confirmation-product-image"
+                                onerror="this.style.display='none'">`
+                        : "";
+
+                    return `
+                        <div class="confirmation-product">
+
+                            <div class="confirmation-product-image-wrapper">
+                                ${imageHTML}
+                            </div>
+
+                            <div class="confirmation-product-info">
+                                <h3>${escapeHTML(item.name)}</h3>
+                                <p>Quantity: ${Number(item.quantity) || 1}</p>
+                            </div>
+
+                            <strong class="confirmation-product-price">
+                                ${formatPrice(
+                                    Number(item.price) * (Number(item.quantity) || 1)
+                                )}
+                            </strong>
+
+                        </div>
+                    `;
+
+                }).join("");
+            }
+
+            document.getElementById("orderSubtotal").textContent =
+                formatPrice(order.subtotal);
+
+            document.getElementById("orderDelivery").textContent =
+                formatPrice(order.deliveryFee);
+
+            document.getElementById("orderTotal").textContent =
+                formatPrice(order.total);
+
+            localStorage.removeItem("mazdaMotionCart");
+
+            const cartCount = document.getElementById("cartCount");
+
+            if (cartCount) {
+                cartCount.textContent = "0";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

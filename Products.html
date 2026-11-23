@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Parts | MazdaMotion</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+
+    <div class="announcement">
+        QUALITY PARTS. BETTER DRIVES. MAZDAMOTION.
+    </div>
+
+    <header class="site-header">
+        <div class="container header-content">
+
+            <a href="Index.html" class="logo">
+                MAZDA<span>MOTION</span>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+
+    <a href="Index.html">Home</a>
+    <a href="Products.html" class="active">Shop Parts</a>
+    <a href="About.html">About Us</a>
+    <a href="Contact Us.html">Contact</a>
+    <a href="Faq.html">FAQ</a>
+
+</nav>
+
+            <div class="header-actions">
+                <a href="Cart.html" class="cart-link">
+                    Cart (<span id="cartCount">0</span>)
+                </a>
+
+                <button class="menu-toggle" id="menuToggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false" type="button">
+                    ☰
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="container shop-page">
+
+        <section class="shop-heading">
+            <p class="section-label">MAZDAMOTION COLLECTION</p>
+            <h1>Shop Mazda Parts</h1>
+            <p>Find the parts you need to keep your Mazda moving.</p>
+        </section>
+
+        <section class="shop-toolbar">
+
+            <input type="text" id="productSearch"
+                placeholder="Search for Mazda parts..."
+                aria-label="Search Mazda parts">
+
+            <select id="categoryFilter"
+                aria-label="Filter products by category">
+                <option value="all">All Categories</option>
+                <option value="engine">Engine Parts</option>
+                <option value="brakes">Brake System</option>
+                <option value="cooling">Cooling System</option>
+                <option value="accessories">Accessories</option>
+            </select>
+
+        </section>
+
+        <section class="product-grid" id="productGrid"></section>
+
+    </main>
+
+    <footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <a href="Index.html" class="logo">
+                MAZDA<span>MOTION</span>
+            </a>
+
+            <p>
+                Your Drive. Your Parts. Your Way.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h3>Quick Links</h3>
+
+            <a href="Index.html">Home</a>
+            <a href="Products.html">Shop Parts</a>
+            <a href="About.html">About Us</a>
+            <a href="Contact Us.html">Contact</a>
+            <a href="Faq.html">Frequently Asked Questions</a>
+
+        </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+
+        <p>
+            © 2026 MazdaMotion. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+    <script>
+        const products = [
+
+            // ENGINE PARTS
+            { name: "ACDelco Oil Filter", category: "engine", image: "ACDelco Oil Filter.jpg", price: 750 },
+            { name: "Air Filter", category: "engine", image: "Air Filter.jpg", price: 850 },
+            { name: "Radiator", category: "engine", image: "Radiator.jpg", price: 3500 },
+            { name: "VIC Oil Filter", category: "engine", image: "VIC Oil Filter.jpg", price: 550 },
+            { name: "Spark Plugs", category: "engine", image: "Spark Plugs.jpg", price: 450 },
+            { name: "Timing Belt Kit", category: "engine", image: "Timing Belt Kit.jpg", price: 2800 },
+            { name: "Timing Chain", category: "engine", image: "Timing Chain.jpg", price: 2200 },
+            { name: "Fuel Injector", category: "engine", image: "Fuel Injector.jpg", price: 1800 },
+
+            // BRAKE SYSTEM
+            { name: "Brake Pads", category: "brakes", image: "Brake Pads.jpg", price: 1500 },
+            { name: "Brake Caliper", category: "brakes", image: "Brake Caliper.jpg", price: 2500 },
+            { name: "Brake Fluid", category: "brakes", image: "Brake Fluid.jpg", price: 350 },
+            { name: "Multipurpose Brake Fluid", category: "brakes", image: "Multipurpose Brake Fluid.jpg", price: 400 },
+            { name: "Brake Disc Rotor", category: "brakes", image: "Brake Disc Rotor.jpg", price: 2000 },
+            { name: "OEM Pedal Set", category: "brakes", image: "OEM Pedal Set.jpg", price: 950 },
+            { name: "OEM Brake Hose Set", category: "brakes", image: "OEM Brake Hose Set.jpg", price: 1200 },
+            { name: "Brake Fluid Reservoir", category: "brakes", image: "Brake Fluid Reservoir.jpg", price: 650 },
+
+            // COOLING SYSTEM
+            { name: "Engine Coolant - Variant 1", category: "cooling", image: "Coolant1.jpg", price: 450 },
+            { name: "Engine Coolant - Variant 2", category: "cooling", image: "Coolant2.jpg", price: 480 },
+            { name: "Engine Coolant - Variant 3", category: "cooling", image: "Coolant3.jpg", price: 500 },
+            { name: "OEM Radiator Cap", category: "cooling", image: "OEM Radiator Cap.jpg", price: 350 },
+            { name: "Water Pump", category: "cooling", image: "Water Pump.jpg", price: 1800 },
+            { name: "Cooling Fan", category: "cooling", image: "Cooling Fan.jpg", price: 2200 },
+            { name: "Coolant Reservoir", category: "cooling", image: "Coolant Reservoir.jpg", price: 850 },
+            { name: "Thermostat Engine", category: "cooling", image: "Thermostat Engine.jpg", price: 650 },
+
+            // ACCESSORIES
+            { name: "Windshield Wiper Blades", category: "accessories", image: "Windshield Wiper Blades.jpg", price: 550 },
+            { name: "LED Headlight Bulbs", category: "accessories", image: "LED Headlight Bulbs.jpg", price: 1200 },
+            { name: "Dashcam Set", category: "accessories", image: "Dashcam Set.jpg", price: 2500 },
+            { name: "Early Warning Device", category: "accessories", image: "Early Warning Device.jpg", price: 250 },
+            { name: "Tire Inflator", category: "accessories", image: "Tire Inflator.jpg", price: 1000 },
+            { name: "Pressure Washer", category: "accessories", image: "Pressure Washer.jpg", price: 2800 },
+            { name: "Flashlight Set", category: "accessories", image: "Flashlight Set.jpg", price: 450 },
+            { name: "Emergency Kit", category: "accessories", image: "Emergency Kit.jpg", price: 850 }
+
+        ];
+
+        const productGrid = document.getElementById("productGrid");
+
+        products.forEach(product => {
+
+            const card = document.createElement("article");
+            card.className = "product-card";
+            card.dataset.category = product.category;
+
+            
+const detailsUrl = `Product%20Details.html?name=${encodeURIComponent(product.name)}&category=${encodeURIComponent(product.category)}&image=${encodeURIComponent(product.image)}&price=${product.price}`;
+
+card.innerHTML = `
+    <div class="product-image">
+        <img src="images/${encodeURIComponent(product.image)}"
+             alt="${product.name}" loading="lazy">
+    </div>
+
+    <div class="product-info">
+        <p class="product-category">
+            ${product.category === "engine" ? "Engine Parts" :
+              product.category === "brakes" ? "Brake System" :
+              product.category === "cooling" ? "Cooling System" :
+              "Accessories"}
+        </p>
+
+        <h3>${product.name}</h3>
+
+        <p class="product-price">
+            ₱${product.price.toLocaleString("en-PH", {
+                minimumFractionDigits: 2
+            })}
+        </p>
+
+        <a href="${detailsUrl}" class="button">
+            View Details
+        </a>
+
+        <button type="button"
+            class="btn btn-primary add-to-cart"
+            data-name="${product.name}"
+            data-price="${product.price}">
+            Add to Cart
+        </button>
+    </div>
+`;
+
+
+            productGrid.appendChild(card);
+        });
+
+        
+        const requestedCategory =
+            new URLSearchParams(window.location.search).get("category");
+
+        const validCategories = [
+            "engine", "brakes", "cooling", "accessories"
+        ];
+
+        if (validCategories.includes(requestedCategory)) {
+            document.getElementById("categoryFilter").value =
+                requestedCategory;
+        }
+
+        console.log("MazdaMotion products loaded:", products.length);
+    </script>
+
+    <script src="Script.js"></script>
+
+</body>
+</html>
