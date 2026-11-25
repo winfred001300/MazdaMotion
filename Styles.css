@@ -2023,6 +2023,7 @@ h3 {
     color: var(--color-muted);
 }
 
+/* FOOTER */
 .footer {
     background: #050505;
     border-top: 1px solid var(--color-primary-dark);
@@ -2038,7 +2039,7 @@ h3 {
 
 .site-footer {
     background: #050505;
-    padding: 35px 0;
+    padding: 35px 0 20px;
     border-top: 1px solid var(--color-primary-dark);
 }
 
@@ -2046,7 +2047,17 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-brand .logo {
+    display: inline-block;
+    margin-bottom: 8px;
 }
 
 .footer-content p {
@@ -2054,6 +2065,48 @@ h3 {
     font-size: 12px;
 }
 
+.footer-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.footer-links h3 {
+    flex-basis: 100%;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    color: var(--color-muted);
+    font-size: 13px;
+    transition: color var(--transition);
+}
+
+.footer-links a + a::before {
+    content: "|";
+    color: var(--color-border);
+    margin-right: 10px;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary-light);
+}
+
+.footer-bottom {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #292929;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--color-muted);
+    font-size: 12px;
+}
+
+/* RESPONSIVE DESIGN */
 @media (max-width: 1000px) {
 
     .header-content {
@@ -2241,6 +2294,10 @@ h3 {
     .footer-content {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .footer-links {
+        justify-content: flex-start;
     }
 
     .shop-toolbar {
